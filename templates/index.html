@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualization system to identify structurally vulnerable links
+        in OHT railway network in semiconductor FAB using
+        betweenness centrality</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/d3-selection.v2.min.js"></script>
+    <script src="https://d3js.org/d3-transition.v2.min.js"></script>
+    <script src="static/js/draw.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-toggle">
+            <button id="toggle-json" class="toggle">From Existing JSON</button>
+            <button id="toggle-calculation" class="toggle">New Calculation</button>
+        </div>
+
+        <div class="existing-json">
+            <h2>From Exsiting Json</h2>
+            <p>JSON file</p>
+            <div class="sel_btn">
+                <button class = 'load_btn' data-ref = 'json'> Load from DB </button>
+                <button class="add_btn"> Add New One </button>
+                <input type="file" name = 'json-file' id="json-file" accept=".json">
+            </div>
+            <label>Selected Json</label>
+            <input type="text" name="json-name" data-from="" class="sel-file" disabled>
+        </div>
+
+        <div class="new-cal">
+            <div class = 'structure'>
+                <h2>New Calculation</h2>
+                <p>Structure</p>
+                <label><input type="radio" name="structure" value="layout">Layout</label>
+                <label><input type="radio" name="structure" value="node">Node</label>
+                <label><input type="radio" name="structure" value="node-port">Node-Port</label>
+                <label><input type="radio" name="structure" value="flow">Flow</label>
+            </div>
+            <div>
+                <p>CSV file</p>
+                <h3>Node</h3>
+                <div class="sel_btn">
+                    <button class = 'load_btn' data-ref = 'node'> Load from DB </button>
+                    <button class="add_btn"> Add New One </button>
+                    <input type="file" name = 'node-file' id="node-file" accept=".csv">
+                </div>
+                <label>Selected Node</label>
+                <input type="text" name="node-name" data-from="" class="sel-file" disabled>
+
+                <h3>Link</h3>
+                <div class="sel_btn">
+                    <button class = 'load_btn' data-ref = 'link'> Load from DB </button>
+                    <button class="add_btn"> Add New One </button>
+                    <input type="file" name = 'link-file' id="link-file" accept=".csv">
+                </div>
+                <label>Selected Link</label>
+                <input type="text" name="link-name" data-from="" class="sel-file" disabled>
+
+                <div class="port">
+                    <h3>Port</h3>
+                    <div class="sel_btn">
+                        <button class = 'load_btn' data-ref = 'port'> Load from DB </button>
+                        <button class="add_btn"> Add New One </button>
+                        <input type="file" name = 'port-file' id="port-file" accept=".csv">
+                    </div>
+                    <label>Selected Port</label>
+                    <input type="text" name="port-name" data-from="" class="sel-file" disabled>
+                </div>
+
+                <div class="flow">
+                    <h3>Flow</h3>
+                    <div class="sel_btn">
+                        <button class = 'load_btn' data-ref = 'flow'> Load from DB </button>
+                        <button class="add_btn"> Add New One </button>
+                        <input type="file" name = 'flow-file' id="flow-file" accept=".csv">
+                    </div>
+                    <label>Selected Flow</label>
+                    <input type="text" name="flow-name" data-from="" class="sel-file" disabled>
+                </div>
+            </div>
+
+            <div class="centrality">
+                <p>Centrality</p>
+                <label><input type="radio" name="centrality" value="betweenness">Betweenness</label>
+                <label><input type="radio" name="centrality" value="stress">Stress</label>
+            </div>
+
+            <div>
+                <h3>Save As</h3>
+                <input type="text" name="save-name" id = "save-name">
+            </div>
+
+        </div>
+
+        <div class = 'sub-btn'>
+            <button id ='init-btn'> Init </button>
+            <button id ='submit_btn'> submit </button>
+        </div>
+    </div>
+
+    <img src="static/image/download.png" alt="Download" class="download" title = "node betweenness download">
+
+    <div class="graph-section">
+        
+    </div>
+
+    <div class="modal">
+        <div class="modal-content">
+            <span id="close">&times;</span>
+
+            <div class="collections">
+            </div>
+
+            <div class="docs">
+                <ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+<script type = "text/javascript" src="static/js/index.js"></script>    
+</body>
+</html>
